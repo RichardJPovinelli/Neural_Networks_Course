@@ -1,9 +1,27 @@
---extra-index-url https://download.pytorch.org/whl/cu125
-# Use a version range so pip resolves a compatible CUDA wheel from the PyTorch index (no +cu suffix)
-torch>=2.4,<3.0
+
+# Use CUDA 11.8 wheels for GPU as discussed
+--extra-index-url https://download.pytorch.org/whl/cu118
+-f https://data.pyg.org/whl/torch-2.5.1+cu118.html
+
+# Core Torch stack (CUDA 11.8 wheels)
+torch==2.5.1+cu118
+torchvision==0.20.1+cu118
+torchaudio==2.5.1+cu118
+
+# PyTorch Geometric compiled dependencies (must match torch build)
+torch-scatter==2.1.2
+torch-sparse==0.6.18
+torch-cluster==1.6.3
+torch-spline-conv==1.2.2
+
+# High-level libraries
+torch-geometric==2.7.0
+# If you want to use these commands, run the install script first: scripts\install_pyg_gpu_cu118.ps1
 transformers>=4.45.0
 tokenizers>=0.20.0
 numpy
 matplotlib
 requests
 ipykernel
+networkx
+scikit-learn
