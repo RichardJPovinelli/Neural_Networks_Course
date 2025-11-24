@@ -1,0 +1,23 @@
+
+# For RTX 5090: prefer CUDA 13.0 (cu130) wheels, fall back to CUDA 12.5 (cu125) if cu130 isn't available.
+# Before installing, verify your system supports CUDA 13.0 by checking:
+#   nvidia-smi  # check the driver version and GPU model
+# And check Python/torch runtime compatibility with:
+#   python -c "import sys, torch; print(sys.version, torch.__version__, getattr(torch.version, 'cuda', None), torch.cuda.is_available())"
+--extra-index-url https://download.pytorch.org/whl/cu130
+--extra-index-url https://download.pytorch.org/whl/cu125
+
+# Core Torch stack (soft pin so pip resolves a matching wheel for your Python/OS/CUDA)
+torch>=2.5.1,<3.0
+torchvision>=0.20.1,<3.0
+torchaudio>=2.5.1,<3.0
+
+
+ipykernel
+ipywidgets
+matplotlib
+networkx
+numpy
+pandas
+requests
+scikit-learn
